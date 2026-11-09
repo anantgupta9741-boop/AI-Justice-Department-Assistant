@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Justice Department Assistant</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="page-header">
+      <div class="header-main">
+        <h1>AI Justice Department Assistant</h1>
+        <p class="subtitle">Ask a question about Indian law and get an answer with the relevant section cited.</p>
+      </div>
+      <div class="header-actions">
+        <label for="language-select" class="lang-label">
+          Language:
+          <select id="language-select" aria-label="Select answer language">
+            <option value="en" selected>English</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+          </select>
+        </label>
+        <button type="button" id="new-conversation-btn" class="text-btn">New conversation</button>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- Starter questions (shown only when the thread is empty) -->
+      <section id="starter-section" class="starter-section" aria-label="Example questions">
+        <p class="starter-label">Example questions:</p>
+        <ul class="starter-list">
+          <li>
+            <button type="button" class="starter-btn" data-question="What is the time limit for replying to an RTI application?">What is the time limit for replying to an RTI application?</button>
+          </li>
+          <li>
+            <button type="button" class="starter-btn" data-question="How can a consumer file a complaint under the Consumer Protection Act?">How can a consumer file a complaint under the Consumer Protection Act?</button>
+          </li>
+          <li>
+            <button type="button" class="starter-btn" data-question="What is the punishment for cheating under the Indian Penal Code?">What is the punishment for cheating under the Indian Penal Code?</button>
+          </li>
+          <li>
+            <button type="button" class="starter-btn" data-question="What are the legal rights of an arrested person under Indian law?">What are the legal rights of an arrested person under Indian law?</button>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Vertical conversation thread -->
+      <section id="thread" class="thread" aria-live="polite" aria-label="Conversation thread"></section>
+    </main>
+
+    <!-- Fixed bottom interaction area -->
+    <footer class="docked-footer">
+      <div class="docked-container">
+        <!-- Live status bar with Stop button -->
+        <div id="status-bar" class="status-bar" hidden>
+          <span id="status-text" class="status-text">Searching the documents...</span>
+          <button type="button" id="stop-btn" class="stop-btn">Stop</button>
+        </div>
+
+        <form id="question-form" class="question-form" autocomplete="off" novalidate>
+          <label for="question-input" class="visually-hidden">Your question</label>
+          <textarea
+            id="question-input"
+            name="question"
+            rows="1"
+            maxlength="2000"
+            placeholder="Ask about an Indian law, for example: What is the time limit for replying to an RTI application?"
+            required
+          ></textarea>
+          <button type="submit" id="submit-btn">Send</button>
+        </form>
+
+        <div class="docked-notes">
+          <span class="disclaimer">This is general legal information, not legal advice.</span>
+          <span class="key-hint">Enter sends &middot; Shift+Enter for new line</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
